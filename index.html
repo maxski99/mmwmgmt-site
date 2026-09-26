@@ -83,6 +83,8 @@
     }
     .hero-line { margin-top: 14px; font-style: italic; color: var(--muted); font-size: 20px; }
     .hero .btn { margin-top: 40px; }
+    .hero-phone { margin-top: 18px; font: 600 18px/1 var(--caps); letter-spacing: .1em; color: var(--muted); text-decoration: none; }
+    .hero-phone:hover { color: var(--gold); }
     .scroll-cue { text-align: center; padding-bottom: 34px; font: 600 14px/1 var(--caps); letter-spacing: .2em; color: var(--muted); }
     .scroll-cue span { display: block; width: 1px; height: 36px; margin: 14px auto 0; background: linear-gradient(var(--gold), transparent); }
 
@@ -91,6 +93,7 @@
       .hero > :nth-child(2) { animation-delay: .15s; }
       .hero > :nth-child(3) { animation-delay: .25s; }
       .hero > :nth-child(4) { animation-delay: .35s; }
+      .hero > :nth-child(5) { animation-delay: .45s; }
       @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     }
 
@@ -193,6 +196,7 @@
       <p class="hero-kicker">Financial &amp; Real Estate Consulting &nbsp;·&nbsp; Chicago</p>
       <p class="hero-line">Clear numbers for your next property or business move.</p>
       <a class="btn" href="#contact">Schedule a consultation</a>
+      <a class="hero-phone" href="tel:+18479204623">or call (847) 920-4623</a>
     </div>
 
     <div class="scroll-cue" aria-hidden="true">Scroll<span></span></div>
@@ -318,7 +322,7 @@
           </div>
           <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-actions">
-            <span class="alt">Or write to <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></span>
+            <span class="alt">Or call <a href="tel:+18479204623">(847) 920-4623</a> or write to <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></span>
             <button class="btn btn-solid" type="submit">Send message</button>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -330,7 +334,7 @@
   <footer>
     <div class="wrap">
       <img src="logo-mark.png" width="757" height="220" alt="">
-      MMW Management LLC &nbsp;·&nbsp; Chicago, Illinois &nbsp;·&nbsp; <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a> &nbsp;·&nbsp; © <span id="year">2026</span>
+      MMW Management LLC &nbsp;·&nbsp; Chicago, Illinois &nbsp;·&nbsp; <a href="tel:+18479204623">(847) 920-4623</a> &nbsp;·&nbsp; <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a> &nbsp;·&nbsp; © <span id="year">2026</span>
     </div>
   </footer>
 
@@ -393,7 +397,7 @@
         form.reset();
         setStatus("Message sent. We'll reply to " + email + ".", "success");
       } catch (err) {
-        setStatus("Your message didn't send. Try again, or email " + FALLBACK_EMAIL + " directly.", "error");
+        setStatus("Your message didn't send. Try again, email " + FALLBACK_EMAIL + ", or call (847) 920-4623.", "error");
       } finally {
         button.disabled = false;
         button.textContent = "Send message";
