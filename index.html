@@ -9,239 +9,257 @@
   <meta property="og:description" content="Financial and real estate consulting in Chicago.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mmwmgmt.com/">
+  <meta name="theme-color" content="#1C1612">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:image" content="https://mmwmgmt.com/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #FFFFFF;
-      --mist: #F3F5F8;
-      --ink: #0E1320;
-      --muted: #5A6372;
-      --line: #E2E6EC;
-      --navy: #14233F;
-      --navy-hover: #1F3560;
-      --sky: #8FCBEA;
-      --error: #B42318;
+      --bone: #ECE7DC;
+      --bone-deep: #E3DDD0;
+      --ink: #2A2622;
+      --muted: #6E675D;
+      --rule: #CBC3B3;
+      --desk: #1C1612;
+      --desk-light: #2B211A;
+      --error: #8E2A1F;
 
-      --display: "Schibsted Grotesk", system-ui, sans-serif;
-      --body: "IBM Plex Sans", system-ui, sans-serif;
-      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --caps: "Cormorant SC", "Cormorant Garamond", Garamond, serif;
+      --serif: "EB Garamond", Garamond, "Times New Roman", serif;
 
-      --wrap: 1120px;
-      --gutter: 24px;
+      /* Paper fibre texture, generated so no image files are needed */
+      --paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.31 0 0 0 0 0.25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .35' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.38 0 0 0 0 0.24 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+
+      /* Letterpress: ink pressed into the stock, catching light on the lower edge */
+      --press: 0 1px 0 rgba(255,255,255,.55), 0 -0.5px 0 rgba(0,0,0,.18);
+
+      --wrap: 1040px;
+      --gutter: 28px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--paper);
+      background: var(--bone) var(--paper);
       color: var(--ink);
-      font: 400 17px/1.6 var(--body);
+      font: 400 19px/1.6 var(--serif);
+      font-variant-numeric: oldstyle-nums;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3 { font-family: var(--display); color: var(--ink); margin: 0; }
+    h1, h2, h3 { margin: 0; font-family: var(--caps); font-weight: 600; color: var(--ink); text-shadow: var(--press); }
     p { margin: 0; }
     a { color: inherit; }
-    :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 2px; }
-
+    :focus-visible { outline: 1.5px solid currentColor; outline-offset: 4px; }
     .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-    .label {
-      font: 500 12px/1 var(--mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
+
+    /* ---------- The desk and the card ---------- */
+    .desk {
+      position: relative;
+      min-height: clamp(640px, 100vh, 1000px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background:
+        var(--grain),
+        radial-gradient(ellipse at 50% 40%, var(--desk-light), var(--desk) 70%);
+      color: var(--bone);
+      overflow: hidden;
+    }
+    .desk-nav { display: flex; justify-content: flex-end; gap: 32px; padding: 28px var(--gutter); }
+    .desk-nav a { font: 600 17px/1 var(--caps); letter-spacing: .08em; text-decoration: none; color: #BFB6A6; }
+    .desk-nav a:hover { color: var(--bone); }
+
+    .card-stage { display: grid; place-items: center; padding: 24px var(--gutter) 40px; }
+    .card {
+      position: relative;
+      width: min(760px, 100%);
+      aspect-ratio: 3.5 / 2;
+      padding: 5.2% 6%;
+      background: var(--bone) var(--paper);
+      color: var(--ink);
+      transform: rotate(-2.2deg);
+      /* a short stack of cards beneath */
+      box-shadow:
+        1px 3px 0 -1px var(--bone-deep), 1px 3px 1px -1px rgba(0,0,0,.35),
+        2px 7px 0 -2px var(--bone-deep), 2px 7px 1px -2px rgba(0,0,0,.35),
+        3px 11px 0 -3px var(--bone-deep), 3px 11px 2px -3px rgba(0,0,0,.4),
+        0 30px 60px -10px rgba(0,0,0,.7);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      text-shadow: var(--press);
+    }
+    .card-contact { font: 400 clamp(12px, 2.1vw, 20px)/1.2 var(--serif); letter-spacing: .02em; }
+    .card-contact a { text-decoration: none; }
+    .card-firm { text-align: right; justify-self: end; white-space: nowrap; }
+    .card-firm strong { display: block; font: 600 clamp(13px, 2.2vw, 22px)/1 var(--caps); letter-spacing: .03em; }
+    .card-firm span { display: block; margin-top: 5px; font: 600 clamp(10px, 1.5vw, 14px)/1.1 var(--caps); letter-spacing: .05em; }
+    .card-center { grid-column: 1 / -1; align-self: center; text-align: center; }
+    .card h1 { line-height: 0; }
+    /* Gold foil stamped into the stock */
+    .card-logo {
+      width: 44%; height: auto;
+      filter: brightness(.82) saturate(1.15)
+              drop-shadow(0 1px 0 rgba(255,255,255,.7))
+              drop-shadow(0 -0.6px 0 rgba(70,52,20,.35));
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .card-address { grid-column: 1 / -1; text-align: center; font: 600 clamp(12px, 2vw, 19px)/1.2 var(--caps); letter-spacing: .04em; }
+
+    .desk-cta { text-align: center; padding: 0 var(--gutter) 64px; }
+    .desk-cta p { font-style: italic; color: #BFB6A6; margin-bottom: 20px; font-size: 19px; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card { animation: settle 1.2s cubic-bezier(.2,.75,.25,1) both; }
+      @keyframes settle {
+        from { opacity: 0; transform: translateY(28px) rotate(-5deg); }
+        to   { opacity: 1; transform: translateY(0) rotate(-2.2deg); }
+      }
     }
 
-    /* Buttons */
+    /* ---------- Buttons ---------- */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0 22px;
-      font: 600 15px/1 var(--body);
-      text-decoration: none; border-radius: 6px; border: 1px solid transparent;
-      cursor: pointer; transition: background-color .15s, border-color .15s;
+      min-height: 50px; padding: 0 30px;
+      font: 700 17px/1 var(--caps); letter-spacing: .1em;
+      text-decoration: none; cursor: pointer;
+      border: 1px solid currentColor; background: transparent;
+      transition: background-color .2s, color .2s;
     }
-    .btn-primary { background: var(--navy); color: #fff; }
-    .btn-primary:hover { background: var(--navy-hover); }
-    .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
-    .btn-ghost:hover { border-color: var(--ink); }
+    .btn-light { color: var(--bone); }
+    .btn-light:hover { background: var(--bone); color: var(--desk); }
+    .btn-ink { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+    .btn-ink:hover { background: #000; }
 
-    /* Header */
-    .site-header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: saturate(160%) blur(8px);
-      border-bottom: 1px solid var(--line);
-    }
-    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .wordmark { font: 700 19px/1 var(--display); letter-spacing: -0.01em; text-decoration: none; }
-    .wordmark span { color: var(--muted); font-weight: 500; }
-    .nav { display: flex; align-items: center; gap: 28px; }
-    .nav a:not(.btn) { font-size: 15px; font-weight: 500; text-decoration: none; color: var(--muted); }
-    .nav a:not(.btn):hover { color: var(--ink); }
-    .nav .btn { min-height: 40px; padding: 0 16px; font-size: 14px; }
+    /* ---------- Paper sections ---------- */
+    section.sheet { padding: 96px 0; }
+    .sheet-head { text-align: center; margin-bottom: 64px; }
+    .sheet-head h2 { font-size: clamp(34px, 4.4vw, 48px); letter-spacing: .04em; line-height: 1; }
+    .sheet-head p { margin: 18px auto 0; max-width: 40ch; color: var(--muted); font-style: italic; }
+    .rule { width: 56px; height: 1px; background: var(--ink); margin: 22px auto 0; opacity: .6; }
 
-    /* Hero */
-    .hero { padding: 96px 0 0; }
-    .hero h1 {
-      font-size: clamp(40px, 6.4vw, 76px);
-      line-height: 1.02;
-      letter-spacing: -0.035em;
-      font-weight: 600;
-      max-width: 15ch;
-    }
-    .hero-sub { margin-top: 28px; max-width: 54ch; font-size: 19px; color: var(--muted); }
-    .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 56px; }
+    .service { display: grid; grid-template-rows: subgrid; grid-row: span 3; text-align: center; }
+    .service h3 { font-size: 26px; letter-spacing: .03em; line-height: 1.1; }
+    .service p { margin-top: 14px; color: var(--muted); }
+    .service ul { list-style: none; margin: 24px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+    .service li { padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
 
-    /* Signature: the two blue stripes of the Chicago flag */
-    .flag { margin-top: 88px; }
-    .flag .stripe { height: 14px; background: var(--sky); transform-origin: left; }
-    .flag-band { padding: 26px 0; }
-    .flag-band ul {
-      list-style: none; margin: 0; padding: 0;
-      display: flex; flex-wrap: wrap; gap: 10px 40px;
-    }
-    .flag-band li { font: 500 13px/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
-    @media (prefers-reduced-motion: no-preference) {
-      .flag .stripe { animation: draw 1.1s cubic-bezier(.2,.7,.2,1) both; }
-      .flag .stripe:last-child { animation-delay: .15s; }
-      @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-    }
-
-    /* Sections */
-    section.block { padding: 112px 0; }
-    .block-head { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-bottom: 56px; align-items: end; }
-    .block-head h2 { font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
-    .block-head p { color: var(--muted); max-width: 52ch; }
-
-    /* Services */
-    .services { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; row-gap: 0; }
-    .service { border-top: 2px solid var(--ink); padding-top: 24px; display: grid; grid-template-rows: subgrid; grid-row: span 3; align-content: start; }
-    .service h3 { font-size: 22px; letter-spacing: -0.015em; font-weight: 600; }
-    .service p { margin-top: 12px; color: var(--muted); }
-    .service ul { margin: 20px 0 0; padding: 0; list-style: none; }
-    .service li { padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
-
-    /* Process */
-    .process-bg { background: var(--mist); }
-    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; counter-reset: step; }
-    .steps li { counter-increment: step; }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 56px; counter-reset: step; }
+    .steps li { counter-increment: step; text-align: center; }
     .steps li::before {
-      content: "Step " counter(step);
-      display: block; margin-bottom: 16px;
-      font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy);
+      content: counter(step, upper-roman);
+      display: block; margin-bottom: 14px;
+      font: 600 30px/1 var(--caps); color: var(--muted); text-shadow: var(--press);
     }
-    .steps h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+    .steps h3 { font-size: 24px; letter-spacing: .03em; }
     .steps p { margin-top: 10px; color: var(--muted); }
 
-    /* About */
-    .about { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
-    .about h2 { font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
-    .about-text p { font-size: 20px; line-height: 1.55; max-width: 40ch; }
-    .about-text p + p { margin-top: 20px; font-size: 17px; color: var(--muted); max-width: 52ch; }
+    .about { max-width: 680px; margin: 0 auto; text-align: center; }
+    .about .lede { font-size: 26px; line-height: 1.45; }
+    .about p + p { margin-top: 22px; color: var(--muted); }
 
-    /* Contact */
-    .contact-bg { background: var(--navy); color: #fff; }
-    .contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
-    .contact h2 { color: #fff; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
-    .contact-intro p { margin-top: 20px; color: #C5CEDD; max-width: 38ch; }
-    .contact-direct { margin-top: 36px; }
-    .contact-direct .label { color: var(--sky); }
-    .contact-direct a { display: inline-block; margin-top: 10px; font-size: 18px; font-weight: 500; color: #fff; }
+    .divider { display: flex; justify-content: center; }
+    .divider span { width: 5px; height: 5px; background: var(--ink); transform: rotate(45deg); opacity: .55; }
 
-    form { background: var(--paper); color: var(--ink); border-radius: 10px; padding: 32px; display: grid; gap: 18px; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .field { display: grid; gap: 6px; }
-    .field label { font-size: 14px; font-weight: 600; }
-    .field label small { font-weight: 400; color: var(--muted); font-size: 13px; }
+    /* ---------- Contact ---------- */
+    .contact { max-width: 720px; margin: 0 auto; }
+    form { display: grid; gap: 30px; margin-top: 8px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .field { display: grid; gap: 4px; }
+    .field label { font: 700 16px/1 var(--caps); letter-spacing: .08em; }
+    .field label small { font: italic 400 15px var(--serif); letter-spacing: 0; color: var(--muted); }
     input, select, textarea {
-      width: 100%; font: 400 16px/1.4 var(--body); color: var(--ink);
-      background: #fff; border: 1px solid #C9CFD8; border-radius: 6px; padding: 12px 14px;
+      width: 100%;
+      font: 400 19px/1.4 var(--serif); color: var(--ink);
+      background: transparent;
+      border: 0; border-bottom: 1px solid var(--ink);
+      border-radius: 0; padding: 10px 0;
     }
-    textarea { min-height: 130px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(20,35,63,.14); }
+    select { appearance: none; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232A2622' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right: 24px; }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: none; border-bottom-width: 2px; padding-bottom: 9px; }
     .botcheck { position: absolute; left: -9999px; }
-    form .btn { width: 100%; }
+    .form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+    .form-actions .alt { color: var(--muted); font-style: italic; font-size: 17px; }
     form .btn[disabled] { opacity: .6; cursor: progress; }
-    .form-status { font-size: 15px; min-height: 1.6em; }
+    .form-status { min-height: 1.6em; font-size: 18px; }
     .form-status.is-error { color: var(--error); }
-    .form-status.is-success { color: var(--navy); font-weight: 600; }
+    .form-status.is-success { font-style: italic; }
 
-    /* Footer */
-    footer { padding: 36px 0; border-top: 1px solid var(--line); }
-    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; font-size: 14px; color: var(--muted); }
-    footer a { color: var(--muted); }
+    /* ---------- Footer: the bottom line of the card ---------- */
+    footer { background: var(--desk) var(--grain); color: #BFB6A6; padding: 34px 0; text-align: center; font: 600 16px/1.4 var(--caps); letter-spacing: .08em; }
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { color: var(--bone); }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .block-head, .about, .contact { grid-template-columns: 1fr; }
-      .services, .steps { grid-template-columns: 1fr; gap: 48px; }
+    /* ---------- Small screens ---------- */
+    @media (max-width: 860px) {
+      .services, .steps { grid-template-columns: 1fr; row-gap: 64px; }
       .service { display: block; }
-      .contact { gap: 40px; }
     }
-    @media (max-width: 640px) {
-      :root { --gutter: 16px; }
-      .nav a:not(.btn) { display: none; }
-      .hero { padding-top: 64px; }
-      .hero-sub { font-size: 17px; }
-      .flag { margin-top: 64px; }
-      .flag .stripe { height: 10px; }
-      section.block { padding: 80px 0; }
+    @media (max-width: 600px) {
+      :root { --gutter: 18px; }
+      body { font-size: 18px; }
+      .desk-nav { justify-content: center; gap: 24px; }
+      .desk { min-height: auto; }
+      .card-stage { padding: 48px var(--gutter) 56px; }
+      .card { transform: rotate(-1.5deg); padding: 6% 6.5%; }
+      @keyframes settle {
+        from { opacity: 0; transform: translateY(20px) rotate(-3deg); }
+        to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
+      }
+      section.sheet { padding: 72px 0; }
       .row { grid-template-columns: 1fr; }
-      form { padding: 22px; }
+      .form-actions .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a class="wordmark" href="#top">MMW <span>Management</span></a>
-      <nav class="nav" aria-label="Main">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a class="btn btn-primary" href="#contact">Get in touch</a>
-      </nav>
+  <header class="desk">
+    <nav class="desk-nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="card-stage">
+      <div class="card">
+        <div class="card-contact"><a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></div>
+        <div class="card-firm">
+          <strong>Financial &amp; Real Estate</strong>
+          <span>Consulting and Advisory</span>
+        </div>
+        <div class="card-center">
+          <h1>
+            <img class="card-logo" src="logo.png" width="757" height="404" alt="MMW Management LLC">
+            <span class="sr-only">Financial and real estate consulting in Chicago</span>
+          </h1>
+        </div>
+        <div class="card-address">Chicago, Illinois &nbsp;·&nbsp; mmwmgmt.com</div>
+      </div>
+    </div>
+
+    <div class="desk-cta">
+      <p>Clear numbers for your next property or business move.</p>
+      <a class="btn btn-light" href="#contact">Schedule a consultation</a>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main>
+    <section class="sheet" id="services">
       <div class="wrap">
-        <h1>Clear numbers for your next property or business move.</h1>
-        <p class="hero-sub">MMW Management is a Chicago consulting firm helping investors and business owners with financial planning, real estate investment, and acquisitions.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Schedule a consultation</a>
-          <a class="btn btn-ghost" href="#services">See services</a>
-        </div>
-      </div>
-      <div class="flag" aria-hidden="true">
-        <div class="stripe"></div>
-        <div class="flag-band">
-          <div class="wrap">
-            <ul>
-              <li>Financial consulting</li>
-              <li>Real estate investment</li>
-              <li>Acquisitions &amp; deal advisory</li>
-              <li>Chicago, Illinois</li>
-            </ul>
-          </div>
-        </div>
-        <div class="stripe"></div>
-      </div>
-    </section>
-
-    <section class="block" id="services">
-      <div class="wrap">
-        <div class="block-head">
+        <div class="sheet-head">
           <h2>Services</h2>
-          <p>Three ways we help, whether you're buying your next building, planning growth, or deciding if a deal is worth it.</p>
+          <div class="rule"></div>
+          <p>Whether you're buying your next building, planning growth, or deciding if a deal is worth it.</p>
         </div>
         <div class="services">
           <article class="service">
-            <h3>Financial consulting</h3>
+            <h3>Financial Consulting</h3>
             <p>Know what your business or portfolio can support before you commit capital.</p>
             <ul>
               <li>Cash flow and budgeting</li>
@@ -250,7 +268,7 @@
             </ul>
           </article>
           <article class="service">
-            <h3>Real estate investment</h3>
+            <h3>Real Estate Investment</h3>
             <p>Find, analyze, and plan property investments in Chicago and beyond.</p>
             <ul>
               <li>Market and property analysis</li>
@@ -259,7 +277,7 @@
             </ul>
           </article>
           <article class="service">
-            <h3>Acquisitions &amp; deal advisory</h3>
+            <h3>Acquisitions &amp; Deal Advisory</h3>
             <p>Support from first look to closing when you're buying or selling a property or business.</p>
             <ul>
               <li>Deal evaluation and due diligence</li>
@@ -271,48 +289,54 @@
       </div>
     </section>
 
-    <section class="block process-bg" aria-labelledby="process-title">
+    <div class="divider" aria-hidden="true"><span></span></div>
+
+    <section class="sheet" aria-labelledby="process-title">
       <div class="wrap">
-        <div class="block-head">
-          <h2 id="process-title">How we work</h2>
-          <p>Every engagement follows the same path, so you always know what happens next.</p>
+        <div class="sheet-head">
+          <h2 id="process-title">How We Work</h2>
+          <div class="rule"></div>
         </div>
         <ol class="steps">
           <li>
-            <h3>Discovery call</h3>
+            <h3>Discovery Call</h3>
             <p>A short conversation about your goals, your timeline, and where things stand today.</p>
           </li>
           <li>
-            <h3>Analysis and strategy</h3>
+            <h3>Analysis &amp; Strategy</h3>
             <p>We review the numbers and come back with clear options and a recommended plan.</p>
           </li>
           <li>
-            <h3>Execution and support</h3>
+            <h3>Execution &amp; Support</h3>
             <p>We help you carry the plan out, from financing and negotiations through closing.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="block" id="about">
-      <div class="wrap about">
-        <h2>About</h2>
-        <div class="about-text">
-          <p>MMW Management is a Chicago-based consulting firm working where finance and real estate meet.</p>
+    <div class="divider" aria-hidden="true"><span></span></div>
+
+    <section class="sheet" id="about">
+      <div class="wrap">
+        <div class="sheet-head">
+          <h2>About</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="about">
+          <p class="lede">MMW Management LLC is a Chicago consulting firm working where finance and real estate meet.</p>
           <p>We work with individual investors, property owners, and small businesses who want an independent second set of eyes on the numbers before they make a move. Every engagement starts with your goals, and you get straight answers, including when a deal doesn't make sense.</p>
         </div>
       </div>
     </section>
 
-    <section class="block contact-bg" id="contact">
+    <div class="divider" aria-hidden="true"><span></span></div>
+
+    <section class="sheet" id="contact">
       <div class="wrap contact">
-        <div class="contact-intro">
-          <h2>Tell us about your project</h2>
-          <p>Send a few details and we'll reply by email to set up a call.</p>
-          <div class="contact-direct">
-            <div class="label">Prefer email?</div>
-            <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a>
-          </div>
+        <div class="sheet-head">
+          <h2>Correspondence</h2>
+          <div class="rule"></div>
+          <p>Tell us about your project and we'll reply by email to set up a call.</p>
         </div>
 
         <form id="contact-form" novalidate>
@@ -332,7 +356,7 @@
               <input id="phone" name="phone" type="tel" autocomplete="tel">
             </div>
             <div class="field">
-              <label for="service">What can we help with?</label>
+              <label for="service">Regarding</label>
               <select id="service" name="service">
                 <option>Financial consulting</option>
                 <option>Real estate investment</option>
@@ -346,7 +370,10 @@
             <textarea id="message" name="message" required></textarea>
           </div>
           <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-primary" type="submit">Send message</button>
+          <div class="form-actions">
+            <span class="alt">Or write to <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></span>
+            <button class="btn btn-ink" type="submit">Send message</button>
+          </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -355,8 +382,7 @@
 
   <footer>
     <div class="wrap">
-      <span>© <span id="year">2026</span> MMW Management · Chicago, IL</span>
-      <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a>
+      MMW Management LLC &nbsp;·&nbsp; Chicago, Illinois &nbsp;·&nbsp; <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a> &nbsp;·&nbsp; © <span id="year">2026</span>
     </div>
   </footer>
 
