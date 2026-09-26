@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MMW Management | Financial & Real Estate Consulting in Chicago</title>
+  <meta name="description" content="MMW Management is a Chicago consulting firm helping investors and business owners with financial consulting, real estate investment, and acquisitions.">
+  <meta property="og:title" content="MMW Management">
+  <meta property="og:description" content="Financial and real estate consulting in Chicago.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mmwmgmt.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #FFFFFF;
+      --mist: #F3F5F8;
+      --ink: #0E1320;
+      --muted: #5A6372;
+      --line: #E2E6EC;
+      --navy: #14233F;
+      --navy-hover: #1F3560;
+      --sky: #8FCBEA;
+      --error: #B42318;
+
+      --display: "Schibsted Grotesk", system-ui, sans-serif;
+      --body: "IBM Plex Sans", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+      --wrap: 1120px;
+      --gutter: 24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 17px/1.6 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: var(--display); color: var(--ink); margin: 0; }
+    p { margin: 0; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 2px; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+    .label {
+      font: 500 12px/1 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 22px;
+      font: 600 15px/1 var(--body);
+      text-decoration: none; border-radius: 6px; border: 1px solid transparent;
+      cursor: pointer; transition: background-color .15s, border-color .15s;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--navy-hover); }
+    .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: saturate(160%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .wordmark { font: 700 19px/1 var(--display); letter-spacing: -0.01em; text-decoration: none; }
+    .wordmark span { color: var(--muted); font-weight: 500; }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a:not(.btn) { font-size: 15px; font-weight: 500; text-decoration: none; color: var(--muted); }
+    .nav a:not(.btn):hover { color: var(--ink); }
+    .nav .btn { min-height: 40px; padding: 0 16px; font-size: 14px; }
+
+    /* Hero */
+    .hero { padding: 96px 0 0; }
+    .hero h1 {
+      font-size: clamp(40px, 6.4vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      font-weight: 600;
+      max-width: 15ch;
+    }
+    .hero-sub { margin-top: 28px; max-width: 54ch; font-size: 19px; color: var(--muted); }
+    .hero-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Signature: the two blue stripes of the Chicago flag */
+    .flag { margin-top: 88px; }
+    .flag .stripe { height: 14px; background: var(--sky); transform-origin: left; }
+    .flag-band { padding: 26px 0; }
+    .flag-band ul {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-wrap: wrap; gap: 10px 40px;
+    }
+    .flag-band li { font: 500 13px/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    @media (prefers-reduced-motion: no-preference) {
+      .flag .stripe { animation: draw 1.1s cubic-bezier(.2,.7,.2,1) both; }
+      .flag .stripe:last-child { animation-delay: .15s; }
+      @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    }
+
+    /* Sections */
+    section.block { padding: 112px 0; }
+    .block-head { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-bottom: 56px; align-items: end; }
+    .block-head h2 { font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
+    .block-head p { color: var(--muted); max-width: 52ch; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; row-gap: 0; }
+    .service { border-top: 2px solid var(--ink); padding-top: 24px; display: grid; grid-template-rows: subgrid; grid-row: span 3; align-content: start; }
+    .service h3 { font-size: 22px; letter-spacing: -0.015em; font-weight: 600; }
+    .service p { margin-top: 12px; color: var(--muted); }
+    .service ul { margin: 20px 0 0; padding: 0; list-style: none; }
+    .service li { padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+
+    /* Process */
+    .process-bg { background: var(--mist); }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; counter-reset: step; }
+    .steps li { counter-increment: step; }
+    .steps li::before {
+      content: "Step " counter(step);
+      display: block; margin-bottom: 16px;
+      font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy);
+    }
+    .steps h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+    .steps p { margin-top: 10px; color: var(--muted); }
+
+    /* About */
+    .about { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
+    .about h2 { font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
+    .about-text p { font-size: 20px; line-height: 1.55; max-width: 40ch; }
+    .about-text p + p { margin-top: 20px; font-size: 17px; color: var(--muted); max-width: 52ch; }
+
+    /* Contact */
+    .contact-bg { background: var(--navy); color: #fff; }
+    .contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
+    .contact h2 { color: #fff; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
+    .contact-intro p { margin-top: 20px; color: #C5CEDD; max-width: 38ch; }
+    .contact-direct { margin-top: 36px; }
+    .contact-direct .label { color: var(--sky); }
+    .contact-direct a { display: inline-block; margin-top: 10px; font-size: 18px; font-weight: 500; color: #fff; }
+
+    form { background: var(--paper); color: var(--ink); border-radius: 10px; padding: 32px; display: grid; gap: 18px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { display: grid; gap: 6px; }
+    .field label { font-size: 14px; font-weight: 600; }
+    .field label small { font-weight: 400; color: var(--muted); font-size: 13px; }
+    input, select, textarea {
+      width: 100%; font: 400 16px/1.4 var(--body); color: var(--ink);
+      background: #fff; border: 1px solid #C9CFD8; border-radius: 6px; padding: 12px 14px;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(20,35,63,.14); }
+    .botcheck { position: absolute; left: -9999px; }
+    form .btn { width: 100%; }
+    form .btn[disabled] { opacity: .6; cursor: progress; }
+    .form-status { font-size: 15px; min-height: 1.6em; }
+    .form-status.is-error { color: var(--error); }
+    .form-status.is-success { color: var(--navy); font-weight: 600; }
+
+    /* Footer */
+    footer { padding: 36px 0; border-top: 1px solid var(--line); }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; font-size: 14px; color: var(--muted); }
+    footer a { color: var(--muted); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .block-head, .about, .contact { grid-template-columns: 1fr; }
+      .services, .steps { grid-template-columns: 1fr; gap: 48px; }
+      .service { display: block; }
+      .contact { gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      :root { --gutter: 16px; }
+      .nav a:not(.btn) { display: none; }
+      .hero { padding-top: 64px; }
+      .hero-sub { font-size: 17px; }
+      .flag { margin-top: 64px; }
+      .flag .stripe { height: 10px; }
+      section.block { padding: 80px 0; }
+      .row { grid-template-columns: 1fr; }
+      form { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="#top">MMW <span>Management</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <h1>Clear numbers for your next property or business move.</h1>
+        <p class="hero-sub">MMW Management is a Chicago consulting firm helping investors and business owners with financial planning, real estate investment, and acquisitions.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Schedule a consultation</a>
+          <a class="btn btn-ghost" href="#services">See services</a>
+        </div>
+      </div>
+      <div class="flag" aria-hidden="true">
+        <div class="stripe"></div>
+        <div class="flag-band">
+          <div class="wrap">
+            <ul>
+              <li>Financial consulting</li>
+              <li>Real estate investment</li>
+              <li>Acquisitions &amp; deal advisory</li>
+              <li>Chicago, Illinois</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stripe"></div>
+      </div>
+    </section>
+
+    <section class="block" id="services">
+      <div class="wrap">
+        <div class="block-head">
+          <h2>Services</h2>
+          <p>Three ways we help, whether you're buying your next building, planning growth, or deciding if a deal is worth it.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <h3>Financial consulting</h3>
+            <p>Know what your business or portfolio can support before you commit capital.</p>
+            <ul>
+              <li>Cash flow and budgeting</li>
+              <li>Financing and capital strategy</li>
+              <li>Financial models and projections</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Real estate investment</h3>
+            <p>Find, analyze, and plan property investments in Chicago and beyond.</p>
+            <ul>
+              <li>Market and property analysis</li>
+              <li>Underwriting and return projections</li>
+              <li>Portfolio strategy</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Acquisitions &amp; deal advisory</h3>
+            <p>Support from first look to closing when you're buying or selling a property or business.</p>
+            <ul>
+              <li>Deal evaluation and due diligence</li>
+              <li>Valuation and offer structure</li>
+              <li>Negotiation and closing support</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block process-bg" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="block-head">
+          <h2 id="process-title">How we work</h2>
+          <p>Every engagement follows the same path, so you always know what happens next.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Discovery call</h3>
+            <p>A short conversation about your goals, your timeline, and where things stand today.</p>
+          </li>
+          <li>
+            <h3>Analysis and strategy</h3>
+            <p>We review the numbers and come back with clear options and a recommended plan.</p>
+          </li>
+          <li>
+            <h3>Execution and support</h3>
+            <p>We help you carry the plan out, from financing and negotiations through closing.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="wrap about">
+        <h2>About</h2>
+        <div class="about-text">
+          <p>MMW Management is a Chicago-based consulting firm working where finance and real estate meet.</p>
+          <p>We work with individual investors, property owners, and small businesses who want an independent second set of eyes on the numbers before they make a move. Every engagement starts with your goals, and you get straight answers, including when a deal doesn't make sense.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block contact-bg" id="contact">
+      <div class="wrap contact">
+        <div class="contact-intro">
+          <h2>Tell us about your project</h2>
+          <p>Send a few details and we'll reply by email to set up a call.</p>
+          <div class="contact-direct">
+            <div class="label">Prefer email?</div>
+            <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a>
+          </div>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="phone">Phone <small>(optional)</small></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="service">What can we help with?</label>
+              <select id="service" name="service">
+                <option>Financial consulting</option>
+                <option>Real estate investment</option>
+                <option>Acquisitions &amp; deal advisory</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> MMW Management · Chicago, IL</span>
+      <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Web3Forms access key: submissions are emailed to the address it was created with.
+    const WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
+    const FALLBACK_EMAIL = "maxw@mmwmgmt.com";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("contact-form");
+    const fields = form.elements;
+    const status = form.querySelector(".form-status");
+    const button = form.querySelector("button[type=submit]");
+
+    function setStatus(text, kind) {
+      status.textContent = text;
+      status.className = "form-status" + (kind ? " is-" + kind : "");
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (fields.botcheck.checked) return;
+
+      const name = fields.name.value.trim();
+      const email = fields.email.value.trim();
+      const message = fields.message.value.trim();
+      if (!name || !email || !message) {
+        setStatus("Add your name, email, and a message, then send again.", "error");
+        return;
+      }
+      if (!fields.email.checkValidity()) {
+        setStatus("Check your email address. It should look like name@example.com.", "error");
+        fields.email.focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Sending…";
+      setStatus("");
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: "New inquiry from mmwmgmt.com: " + fields.service.value,
+            from_name: "MMW Management website",
+            replyto: email,
+            name,
+            email,
+            phone: fields.phone.value.trim() || "Not provided",
+            service: fields.service.value,
+            message,
+          }),
+        });
+        const result = await response.json();
+        if (!result.success) throw new Error(result.message);
+        form.reset();
+        setStatus("Message sent. We'll reply to " + email + ".", "success");
+      } catch (err) {
+        setStatus("Your message didn't send. Try again, or email " + FALLBACK_EMAIL + " directly.", "error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Send message";
+      }
+    });
+  </script>
+</body>
+</html>
