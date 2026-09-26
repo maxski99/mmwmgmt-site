@@ -9,32 +9,24 @@
   <meta property="og:description" content="Financial and real estate consulting in Chicago.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mmwmgmt.com/">
-  <meta name="theme-color" content="#1C1612">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:image" content="https://mmwmgmt.com/logo.png">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bone: #ECE7DC;
-      --bone-deep: #E3DDD0;
-      --ink: #2A2622;
-      --muted: #6E675D;
-      --rule: #CBC3B3;
-      --desk: #1C1612;
-      --desk-light: #2B211A;
-      --error: #8E2A1F;
+      --black: #0A0A0A;
+      --raised: #121212;
+      --white: #F4F2EE;
+      --muted: #A7A29A;
+      --rule: #2C2A27;
+      --gold: #C4A76E;
+      --error: #E08A7A;
 
       --caps: "Cormorant SC", "Cormorant Garamond", Garamond, serif;
       --serif: "EB Garamond", Garamond, "Times New Roman", serif;
-
-      /* Paper fibre texture, generated so no image files are needed */
-      --paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.31 0 0 0 0 0.25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .35' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.38 0 0 0 0 0.24 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-
-      /* Letterpress: ink pressed into the stock, catching light on the lower edge */
-      --press: 0 1px 0 rgba(255,255,255,.55), 0 -0.5px 0 rgba(0,0,0,.18);
 
       --wrap: 1040px;
       --gutter: 28px;
@@ -44,118 +36,86 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bone) var(--paper);
-      color: var(--ink);
+      background: var(--black);
+      color: var(--white);
       font: 400 19px/1.6 var(--serif);
       font-variant-numeric: oldstyle-nums;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3 { margin: 0; font-family: var(--caps); font-weight: 600; color: var(--ink); text-shadow: var(--press); }
+    h1, h2, h3 { margin: 0; font-family: var(--caps); font-weight: 600; color: var(--white); }
     p { margin: 0; }
     a { color: inherit; }
-    :focus-visible { outline: 1.5px solid currentColor; outline-offset: 4px; }
+    ::selection { background: var(--gold); color: var(--black); }
+    :focus-visible { outline: 1.5px solid var(--gold); outline-offset: 4px; }
     .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-
-    /* ---------- The desk and the card ---------- */
-    .desk {
-      position: relative;
-      min-height: clamp(640px, 100vh, 1000px);
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      background:
-        var(--grain),
-        radial-gradient(ellipse at 50% 40%, var(--desk-light), var(--desk) 70%);
-      color: var(--bone);
-      overflow: hidden;
-    }
-    .desk-nav { display: flex; justify-content: flex-end; gap: 32px; padding: 28px var(--gutter); }
-    .desk-nav a { font: 600 17px/1 var(--caps); letter-spacing: .08em; text-decoration: none; color: #BFB6A6; }
-    .desk-nav a:hover { color: var(--bone); }
-
-    .card-stage { display: grid; place-items: center; padding: 24px var(--gutter) 40px; }
-    .card {
-      position: relative;
-      width: min(760px, 100%);
-      aspect-ratio: 3.5 / 2;
-      padding: 5.2% 6%;
-      background: var(--bone) var(--paper);
-      color: var(--ink);
-      transform: rotate(-2.2deg);
-      /* a short stack of cards beneath */
-      box-shadow:
-        1px 3px 0 -1px var(--bone-deep), 1px 3px 1px -1px rgba(0,0,0,.35),
-        2px 7px 0 -2px var(--bone-deep), 2px 7px 1px -2px rgba(0,0,0,.35),
-        3px 11px 0 -3px var(--bone-deep), 3px 11px 2px -3px rgba(0,0,0,.4),
-        0 30px 60px -10px rgba(0,0,0,.7);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr auto;
-      text-shadow: var(--press);
-    }
-    .card-contact { font: 400 clamp(12px, 2.1vw, 20px)/1.2 var(--serif); letter-spacing: .02em; }
-    .card-contact a { text-decoration: none; }
-    .card-firm { text-align: right; justify-self: end; white-space: nowrap; }
-    .card-firm strong { display: block; font: 600 clamp(13px, 2.2vw, 22px)/1 var(--caps); letter-spacing: .03em; }
-    .card-firm span { display: block; margin-top: 5px; font: 600 clamp(10px, 1.5vw, 14px)/1.1 var(--caps); letter-spacing: .05em; }
-    .card-center { grid-column: 1 / -1; align-self: center; text-align: center; }
-    .card h1 { line-height: 0; }
-    /* Gold foil stamped into the stock */
-    .card-logo {
-      width: 44%; height: auto;
-      filter: brightness(.82) saturate(1.15)
-              drop-shadow(0 1px 0 rgba(255,255,255,.7))
-              drop-shadow(0 -0.6px 0 rgba(70,52,20,.35));
-    }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .card-address { grid-column: 1 / -1; text-align: center; font: 600 clamp(12px, 2vw, 19px)/1.2 var(--caps); letter-spacing: .04em; }
-
-    .desk-cta { text-align: center; padding: 0 var(--gutter) 64px; }
-    .desk-cta p { font-style: italic; color: #BFB6A6; margin-bottom: 20px; font-size: 19px; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .card { animation: settle 1.2s cubic-bezier(.2,.75,.25,1) both; }
-      @keyframes settle {
-        from { opacity: 0; transform: translateY(28px) rotate(-5deg); }
-        to   { opacity: 1; transform: translateY(0) rotate(-2.2deg); }
-      }
-    }
 
     /* ---------- Buttons ---------- */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       min-height: 50px; padding: 0 30px;
-      font: 700 17px/1 var(--caps); letter-spacing: .1em;
+      font: 700 17px/1 var(--caps); letter-spacing: .12em;
       text-decoration: none; cursor: pointer;
-      border: 1px solid currentColor; background: transparent;
+      border: 1px solid var(--white); background: transparent; color: var(--white);
       transition: background-color .2s, color .2s;
     }
-    .btn-light { color: var(--bone); }
-    .btn-light:hover { background: var(--bone); color: var(--desk); }
-    .btn-ink { background: var(--ink); color: var(--bone); border-color: var(--ink); }
-    .btn-ink:hover { background: #000; }
+    .btn:hover { background: var(--white); color: var(--black); }
+    .btn-solid { background: var(--white); color: var(--black); }
+    .btn-solid:hover { background: var(--gold); border-color: var(--gold); }
 
-    /* ---------- Paper sections ---------- */
-    section.sheet { padding: 96px 0; }
-    .sheet-head { text-align: center; margin-bottom: 64px; }
-    .sheet-head h2 { font-size: clamp(34px, 4.4vw, 48px); letter-spacing: .04em; line-height: 1; }
-    .sheet-head p { margin: 18px auto 0; max-width: 40ch; color: var(--muted); font-style: italic; }
-    .rule { width: 56px; height: 1px; background: var(--ink); margin: 22px auto 0; opacity: .6; }
+    /* ---------- Top ---------- */
+    .top {
+      min-height: clamp(620px, 100vh, 980px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav { display: flex; justify-content: flex-end; gap: 34px; padding: 30px var(--gutter); }
+    .nav a { font: 600 17px/1 var(--caps); letter-spacing: .1em; text-decoration: none; color: var(--muted); }
+    .nav a:hover { color: var(--white); }
+
+    .hero { display: grid; place-items: center; text-align: center; padding: 24px var(--gutter) 40px; }
+    .hero h1 { line-height: 0; }
+    .hero-logo { width: min(460px, 78vw); height: auto; }
+    .hero-kicker {
+      margin-top: 44px;
+      font: 600 clamp(16px, 2vw, 20px)/1.3 var(--caps); letter-spacing: .16em; color: var(--white);
+    }
+    .hero-line { margin-top: 14px; font-style: italic; color: var(--muted); font-size: 20px; }
+    .hero .btn { margin-top: 40px; }
+    .scroll-cue { text-align: center; padding-bottom: 34px; font: 600 14px/1 var(--caps); letter-spacing: .2em; color: var(--muted); }
+    .scroll-cue span { display: block; width: 1px; height: 36px; margin: 14px auto 0; background: linear-gradient(var(--gold), transparent); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero > * { animation: rise 1s cubic-bezier(.2,.75,.25,1) both; }
+      .hero > :nth-child(2) { animation-delay: .15s; }
+      .hero > :nth-child(3) { animation-delay: .25s; }
+      .hero > :nth-child(4) { animation-delay: .35s; }
+      @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 104px 0; }
+    .head { text-align: center; margin-bottom: 64px; }
+    .head h2 { font-size: clamp(34px, 4.4vw, 50px); letter-spacing: .05em; line-height: 1; }
+    .head p { margin: 20px auto 0; max-width: 42ch; color: var(--muted); font-style: italic; }
+    .rule { width: 56px; height: 1px; background: var(--gold); margin: 24px auto 0; }
 
     .services { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 56px; }
     .service { display: grid; grid-template-rows: subgrid; grid-row: span 3; text-align: center; }
-    .service h3 { font-size: 26px; letter-spacing: .03em; line-height: 1.1; }
+    .service h3 { font-size: 26px; letter-spacing: .04em; line-height: 1.1; }
     .service p { margin-top: 14px; color: var(--muted); }
-    .service ul { list-style: none; margin: 24px 0 0; padding: 0; border-top: 1px solid var(--rule); }
-    .service li { padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+    .service ul { list-style: none; margin: 26px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+    .service li { padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
 
     .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 56px; counter-reset: step; }
     .steps li { counter-increment: step; text-align: center; }
     .steps li::before {
       content: counter(step, upper-roman);
       display: block; margin-bottom: 14px;
-      font: 600 30px/1 var(--caps); color: var(--muted); text-shadow: var(--press);
+      font: 600 30px/1 var(--caps); color: var(--gold);
     }
-    .steps h3 { font-size: 24px; letter-spacing: .03em; }
+    .steps h3 { font-size: 24px; letter-spacing: .04em; }
     .steps p { margin-top: 10px; color: var(--muted); }
 
     .about { max-width: 680px; margin: 0 auto; text-align: center; }
@@ -163,37 +123,40 @@
     .about p + p { margin-top: 22px; color: var(--muted); }
 
     .divider { display: flex; justify-content: center; }
-    .divider span { width: 5px; height: 5px; background: var(--ink); transform: rotate(45deg); opacity: .55; }
+    .divider span { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
 
     /* ---------- Contact ---------- */
+    .contact-bg { background: var(--raised); border-top: 1px solid var(--rule); }
     .contact { max-width: 720px; margin: 0 auto; }
-    form { display: grid; gap: 30px; margin-top: 8px; }
+    form { display: grid; gap: 30px; }
     .row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
     .field { display: grid; gap: 4px; }
-    .field label { font: 700 16px/1 var(--caps); letter-spacing: .08em; }
+    .field label { font: 700 16px/1 var(--caps); letter-spacing: .1em; }
     .field label small { font: italic 400 15px var(--serif); letter-spacing: 0; color: var(--muted); }
     input, select, textarea {
       width: 100%;
-      font: 400 19px/1.4 var(--serif); color: var(--ink);
+      font: 400 19px/1.4 var(--serif); color: var(--white);
       background: transparent;
-      border: 0; border-bottom: 1px solid var(--ink);
+      border: 0; border-bottom: 1px solid #5A5650;
       border-radius: 0; padding: 10px 0;
     }
-    select { appearance: none; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232A2622' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right: 24px; }
+    select { appearance: none; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F4F2EE' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 4px center; padding-right: 24px; }
+    select option { background: var(--raised); color: var(--white); }
     textarea { min-height: 120px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { outline: none; border-bottom-width: 2px; padding-bottom: 9px; }
+    input:focus, select:focus, textarea:focus { outline: none; border-bottom: 1px solid var(--gold); box-shadow: 0 1px 0 var(--gold); }
     .botcheck { position: absolute; left: -9999px; }
     .form-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
     .form-actions .alt { color: var(--muted); font-style: italic; font-size: 17px; }
     form .btn[disabled] { opacity: .6; cursor: progress; }
     .form-status { min-height: 1.6em; font-size: 18px; }
     .form-status.is-error { color: var(--error); }
-    .form-status.is-success { font-style: italic; }
+    .form-status.is-success { color: var(--gold); font-style: italic; }
 
-    /* ---------- Footer: the bottom line of the card ---------- */
-    footer { background: var(--desk) var(--grain); color: #BFB6A6; padding: 34px 0; text-align: center; font: 600 16px/1.4 var(--caps); letter-spacing: .08em; }
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--rule); padding: 36px 0; text-align: center; font: 600 16px/1.5 var(--caps); letter-spacing: .1em; color: var(--muted); }
+    footer img { display: block; width: 96px; height: auto; margin: 0 auto 18px; }
     footer a { color: inherit; text-decoration: none; }
-    footer a:hover { color: var(--bone); }
+    footer a:hover { color: var(--white); }
 
     /* ---------- Small screens ---------- */
     @media (max-width: 860px) {
@@ -203,15 +166,11 @@
     @media (max-width: 600px) {
       :root { --gutter: 18px; }
       body { font-size: 18px; }
-      .desk-nav { justify-content: center; gap: 24px; }
-      .desk { min-height: auto; }
-      .card-stage { padding: 48px var(--gutter) 56px; }
-      .card { transform: rotate(-1.5deg); padding: 6% 6.5%; }
-      @keyframes settle {
-        from { opacity: 0; transform: translateY(20px) rotate(-3deg); }
-        to   { opacity: 1; transform: translateY(0) rotate(-1.5deg); }
-      }
-      section.sheet { padding: 72px 0; }
+      .top { min-height: auto; }
+      .nav { justify-content: center; gap: 26px; }
+      .hero { padding: 56px var(--gutter) 64px; }
+      .scroll-cue { display: none; }
+      section.block { padding: 72px 0; }
       .row { grid-template-columns: 1fr; }
       .form-actions .btn { width: 100%; }
     }
@@ -219,40 +178,30 @@
 </head>
 <body>
 
-  <header class="desk">
-    <nav class="desk-nav" aria-label="Main">
+  <header class="top">
+    <nav class="nav" aria-label="Main">
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <div class="card-stage">
-      <div class="card">
-        <div class="card-contact"><a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></div>
-        <div class="card-firm">
-          <strong>Financial &amp; Real Estate</strong>
-          <span>Consulting and Advisory</span>
-        </div>
-        <div class="card-center">
-          <h1>
-            <img class="card-logo" src="logo.png" width="757" height="404" alt="MMW Management LLC">
-            <span class="sr-only">Financial and real estate consulting in Chicago</span>
-          </h1>
-        </div>
-        <div class="card-address">Chicago, Illinois &nbsp;·&nbsp; mmwmgmt.com</div>
-      </div>
+    <div class="hero">
+      <h1>
+        <img class="hero-logo" src="logo.png" width="757" height="404" alt="MMW Management LLC">
+        <span class="sr-only">Financial and real estate consulting in Chicago</span>
+      </h1>
+      <p class="hero-kicker">Financial &amp; Real Estate Consulting &nbsp;·&nbsp; Chicago</p>
+      <p class="hero-line">Clear numbers for your next property or business move.</p>
+      <a class="btn" href="#contact">Schedule a consultation</a>
     </div>
 
-    <div class="desk-cta">
-      <p>Clear numbers for your next property or business move.</p>
-      <a class="btn btn-light" href="#contact">Schedule a consultation</a>
-    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll<span></span></div>
   </header>
 
   <main>
-    <section class="sheet" id="services">
+    <section class="block" id="services">
       <div class="wrap">
-        <div class="sheet-head">
+        <div class="head">
           <h2>Services</h2>
           <div class="rule"></div>
           <p>Whether you're buying your next building, planning growth, or deciding if a deal is worth it.</p>
@@ -291,9 +240,9 @@
 
     <div class="divider" aria-hidden="true"><span></span></div>
 
-    <section class="sheet" aria-labelledby="process-title">
+    <section class="block" aria-labelledby="process-title">
       <div class="wrap">
-        <div class="sheet-head">
+        <div class="head">
           <h2 id="process-title">How We Work</h2>
           <div class="rule"></div>
         </div>
@@ -316,9 +265,9 @@
 
     <div class="divider" aria-hidden="true"><span></span></div>
 
-    <section class="sheet" id="about">
+    <section class="block" id="about">
       <div class="wrap">
-        <div class="sheet-head">
+        <div class="head">
           <h2>About</h2>
           <div class="rule"></div>
         </div>
@@ -329,11 +278,9 @@
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true"><span></span></div>
-
-    <section class="sheet" id="contact">
+    <section class="block contact-bg" id="contact">
       <div class="wrap contact">
-        <div class="sheet-head">
+        <div class="head">
           <h2>Correspondence</h2>
           <div class="rule"></div>
           <p>Tell us about your project and we'll reply by email to set up a call.</p>
@@ -372,7 +319,7 @@
           <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-actions">
             <span class="alt">Or write to <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a></span>
-            <button class="btn btn-ink" type="submit">Send message</button>
+            <button class="btn btn-solid" type="submit">Send message</button>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -382,6 +329,7 @@
 
   <footer>
     <div class="wrap">
+      <img src="logo-mark.png" width="757" height="220" alt="">
       MMW Management LLC &nbsp;·&nbsp; Chicago, Illinois &nbsp;·&nbsp; <a href="mailto:maxw@mmwmgmt.com">maxw@mmwmgmt.com</a> &nbsp;·&nbsp; © <span id="year">2026</span>
     </div>
   </footer>
